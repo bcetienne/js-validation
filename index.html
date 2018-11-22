@@ -18,25 +18,48 @@
     <h1>API Pokemon</h1>
   </header>
 
+  <div id="last-seen-data" class="hide">
+    <div class="first">
+      <h4>Nom du dernier Pokémon vu : <span id="last-seen-name"></span></h4>
+    </div>
+    <div class="second">
+      <h4>Numéro dans le Pokédex : <span id="last-seen-id"></span></h4>
+    </div>
+  </div>
+
+<!-- 
   <div class="container">
     <div class="by-name" id="by-name">
       <h2>Chercher un Pokemon par son nom (seulement en anglais)</h2>
-        <input type="text" class="" id="input-find-pokemon-by-name">
-        <input type="button" class="button-find-pokemon button-find-pokemon-by-name" id="button-find-pokemon-by-name" value="Chercher">
+      <input type="text" class="" id="input-find-pokemon-by-name">
+      <input type="button" class="button-find-pokemon button-find-pokemon-by-name" id="button-find-pokemon-by-name"
+        value="Chercher">
     </div>
   </div>
+-->
 
   <div class="container">
     <div class="by-id" id="by-id">
       <h2>Chercher un Pokemon par son numéro d'identification dans le Pokédex</h2>
-        <input type="number" class="" id="input-find-pokemon-by-id">
-        <input type="button" class="button-find-pokemon button-find-pokemon-by-id" id="button-find-pokemon-by-id" value="Chercher">
+      <input type="number" class="" id="input-find-pokemon-by-id">
+      <input type="button" class="button-find-pokemon button-find-pokemon-by-id" id="button-find-pokemon-by-id" value="Chercher">
     </div>
   </div>
 
   <div class="container hide" id="results-container">
     <div class="results" id="results">
       <h2>Résultat</h2>
+      <div class="results-data" id="results-data">
+        <div>
+          <h3>Nom : </h3>
+          <span class="pokemon-name" id="pokemon-name"></span>
+        </div>
+        <div>
+          <h3>Numéro dans le pokédex : </h3>
+          <span class="pokemon-id" id="pokemon-id"></span>
+        </div>
+        <div class="pokemon-type" id="pokemon-type"></div>
+      </div>
       <input type="button" class="" id="button-results-return" value="Retour">
     </div>
   </div>
