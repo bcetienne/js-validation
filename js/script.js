@@ -9,13 +9,15 @@ $(document).ready(function () {
     lastSeenName: $("last-seen-name"),
     lastSeenId: $("last-seen-id")
   }
+  const inputs = {
+    searchById: $("#input-find-pokemon-by-id"),
+    // searchByName: $("#input-find-pokemon-by-name")
+  }
   const buttons = {
     searchById: $("#button-find-pokemon-by-id"),
     // searchByName: $("#button-find-pokemon-by-name"),
     resultsReturn: $("#button-results-return")
   }
-  const inputSearchById = $("#input-find-pokemon-by-id");
-  const inputSearchByName = $("#input-find-pokemon-by-name");
   const urls = {
     baseUrlSearchPokemon: 'https://pokeapi.co/api/v2/pokemon/',
     baseUrlSearchType: 'https://pokeapi.co/api/v2/type/',
@@ -40,7 +42,7 @@ $(document).ready(function () {
     // div.searchByName.addClass('hide');
     $("#last-seen-data").addClass('hide');
     div.resultsContainer.removeClass('hide');
-    let pokemonId = Number(inputSearchById.val())
+    let pokemonId = Number(inputs.searchById.val())
     // Set the url to be more readable
     let urlPokemon = urls.baseUrlSearchPokemon + pokemonId;
     // Test if the input is empty
@@ -65,15 +67,17 @@ $(document).ready(function () {
   });
 
   buttons.resultsReturn.click(function (e) {
+    let lastIdSeenLocal = localStorage.getItem('lastIdSeen');
+    let lastNameSeenLocal = localStorage.getItem('lastNameSeen');
     div.searchById.removeClass('hide');
     // div.searchByName.removeClass('hide');
     div.resultsContainer.addClass('hide');
     div.pokemonName.html('');
     div.pokemonId.html('');
-    if (localStorage.getItem('lastIdSeen') !== undefined && localStorage.getItem('lastIdSeen') !== null && localStorage.getItem('lastIdSeen') !== '' && localStorage.getItem('lastNameSeen') !== undefined && localStorage.getItem('lastNameSeen') !== null && localStorage.getItem('lastNameSeen') !== '') {
+    if (lastIdSeenLocal !== undefined && lastIdSeenLocal !== null && lastIdSeenLocal !== '' && lastNameSeenLocal !== undefined && lastNameSeenLocal !== null && lastNameSeenLocal !== '') {
       $("#last-seen-data").removeClass('hide');
-      $("#last-seen-name").html(localStorage.getItem('lastNameSeen'));
-      $("#last-seen-id").html(localStorage.getItem('lastIdSeen'));
+      $("#last-seen-name").html(lastNameSeenLocal);
+      $("#last-seen-id").html(lastIdSeenLocal);
     }
   });
 });
