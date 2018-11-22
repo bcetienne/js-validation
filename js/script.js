@@ -14,12 +14,6 @@ $(document).ready(function () {
     // searchByName: $("#button-find-pokemon-by-name"),
     resultsReturn: $("#button-results-return")
   }
-  const divSearchByName = $("#by-name");
-  const divSearchById = $("#by-id");
-  const divResultsContainer = $("#results-container");
-  const divPokemonName = $("#pokemon-name");
-  const divPokemonId = $("#pokemon-id");
-  const buttonSearchByName = $("#button-find-pokemon-by-name");
   const inputSearchById = $("#input-find-pokemon-by-id");
   const inputSearchByName = $("#input-find-pokemon-by-name");
   const urls = {
@@ -42,10 +36,10 @@ $(document).ready(function () {
    */
   buttons.searchById.click(function (e) {
     // Hide or show different divs
-    divSearchById.addClass('hide');
-    divSearchByName.addClass('hide');
+    div.searchById.addClass('hide');
+    // div.searchByName.addClass('hide');
     $("#last-seen-data").addClass('hide');
-    divResultsContainer.removeClass('hide');
+    div.resultsContainer.removeClass('hide');
     let pokemonId = Number(inputSearchById.val())
     // Set the url to be more readable
     let urlPokemon = urls.baseUrlSearchPokemon + pokemonId;
@@ -57,8 +51,8 @@ $(document).ready(function () {
       $.getJSON(urlPokemon,
         function (data, textStatus, jqXHR) {
           // Write data in the html
-          divPokemonName.html(data.name);
-          divPokemonId.html(data.id);
+          div.pokemonName.html(data.name);
+          div.pokemonId.html(data.id);
           // Remove old pokemon seen
           localStorage.removeItem('lastIdSeen');
           localStorage.removeItem('lastNameSeen');
@@ -71,11 +65,11 @@ $(document).ready(function () {
   });
 
   buttons.resultsReturn.click(function (e) {
-    divSearchById.removeClass('hide');
-    divSearchByName.removeClass('hide');
-    divResultsContainer.addClass('hide');
-    divPokemonName.html('');
-    divPokemonId.html('');
+    div.searchById.removeClass('hide');
+    // div.searchByName.removeClass('hide');
+    div.resultsContainer.addClass('hide');
+    div.pokemonName.html('');
+    div.pokemonId.html('');
     if (localStorage.getItem('lastIdSeen') !== undefined && localStorage.getItem('lastIdSeen') !== null && localStorage.getItem('lastIdSeen') !== '' && localStorage.getItem('lastNameSeen') !== undefined && localStorage.getItem('lastNameSeen') !== null && localStorage.getItem('lastNameSeen') !== '') {
       $("#last-seen-data").removeClass('hide');
       $("#last-seen-name").html(localStorage.getItem('lastNameSeen'));
