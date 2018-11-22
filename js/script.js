@@ -5,9 +5,9 @@ $(document).ready(function () {
     pokemonName: $("#pokemon-name"),
     pokemonId: $("#pokemon-id"),
     resultsContainer: $("#results-container"),
-    lastSeenData: $("last-seen-data"),
-    lastSeenName: $("last-seen-name"),
-    lastSeenId: $("last-seen-id")
+    lastSeenData: $("#last-seen-data"),
+    lastSeenName: $("#last-seen-name"),
+    lastSeenId: $("#last-seen-id")
   }
   const inputs = {
     searchById: $("#input-find-pokemon-by-id"),
@@ -23,6 +23,7 @@ $(document).ready(function () {
     baseUrlSearchType: 'https://pokeapi.co/api/v2/type/',
     baseUrlSearchAbility: 'https://pokeapi.co/api/v2/ability/'
   };
+  
   /**
    * Action click on the button to search Pokemon by name
    */
@@ -40,7 +41,7 @@ $(document).ready(function () {
     // Hide or show different divs
     div.searchById.addClass('hide');
     // div.searchByName.addClass('hide');
-    $("#last-seen-data").addClass('hide');
+    div.lastSeenData.addClass('hide');
     div.resultsContainer.removeClass('hide');
     let pokemonId = Number(inputs.searchById.val())
     // Set the url to be more readable
@@ -75,9 +76,9 @@ $(document).ready(function () {
     div.pokemonName.html('');
     div.pokemonId.html('');
     if (lastIdSeenLocal !== undefined && lastIdSeenLocal !== null && lastIdSeenLocal !== '' && lastNameSeenLocal !== undefined && lastNameSeenLocal !== null && lastNameSeenLocal !== '') {
-      $("#last-seen-data").removeClass('hide');
-      $("#last-seen-name").html(lastNameSeenLocal);
-      $("#last-seen-id").html(lastIdSeenLocal);
+      div.lastSeenData.removeClass('hide');
+      div.lastSeenName.html(lastNameSeenLocal);
+      div.lastSeenId.html(lastIdSeenLocal);
     }
   });
 });
