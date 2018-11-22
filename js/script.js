@@ -20,8 +20,6 @@ $(document).ready(function () {
   const divPokemonName = $("#pokemon-name");
   const divPokemonId = $("#pokemon-id");
   const buttonSearchByName = $("#button-find-pokemon-by-name");
-  const buttonSearchById = $("#button-find-pokemon-by-id");
-  const buttonResultsReturn = $("#button-results-return");
   const inputSearchById = $("#input-find-pokemon-by-id");
   const inputSearchByName = $("#input-find-pokemon-by-name");
   const urls = {
@@ -42,7 +40,7 @@ $(document).ready(function () {
   /**
    * Action click on the button to search Pokemon by id
    */
-  buttonSearchById.click(function (e) {
+  buttons.searchById.click(function (e) {
     // Hide or show different divs
     divSearchById.addClass('hide');
     divSearchByName.addClass('hide');
@@ -72,7 +70,7 @@ $(document).ready(function () {
     }
   });
 
-  buttonResultsReturn.click(function (e) {
+  buttons.resultsReturn.click(function (e) {
     divSearchById.removeClass('hide');
     divSearchByName.removeClass('hide');
     divResultsContainer.addClass('hide');
