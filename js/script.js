@@ -67,14 +67,22 @@ $(document).ready(function () {
     }
   });
 
+  /**
+   * Hide result and display home divs
+   */
   buttons.resultsReturn.click(function (e) {
+    // Set in vars the local storage data contents
     let lastIdSeenLocal = localStorage.getItem('lastIdSeen');
     let lastNameSeenLocal = localStorage.getItem('lastNameSeen');
+    // Display the home view
     div.searchById.removeClass('hide');
     // div.searchByName.removeClass('hide');
+    // Hide the result divs
     div.resultsContainer.addClass('hide');
+    // Empty string
     div.pokemonName.html('');
     div.pokemonId.html('');
+    // Test if the localstorage is not empty
     if (lastIdSeenLocal !== undefined && lastIdSeenLocal !== null && lastIdSeenLocal !== '' && lastNameSeenLocal !== undefined && lastNameSeenLocal !== null && lastNameSeenLocal !== '') {
       div.lastSeenData.removeClass('hide');
       div.lastSeenName.html(lastNameSeenLocal);
